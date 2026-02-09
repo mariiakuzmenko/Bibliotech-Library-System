@@ -30,6 +30,7 @@ public class Users {
     private Date dateOfBirth;
     private boolean isActive; // true = активний, false = заблокований
     private Date createdDate; // Коли акаунт створено
+    private String image;
 
     @ManyToMany(fetch = FetchType.EAGER)
     // Асоціація багато-до-багатьох: один користувач може мати багато ролей

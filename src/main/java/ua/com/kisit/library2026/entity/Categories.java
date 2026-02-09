@@ -21,6 +21,7 @@ public class Categories {
     private Long id;
     private String name; // "Книга", "Журнал"
     private String description;
+    private String image;
 
     @OneToMany(mappedBy = "category")
     // Асоціація: 1-до-багатьох: одна категорія може мати багато публікацій

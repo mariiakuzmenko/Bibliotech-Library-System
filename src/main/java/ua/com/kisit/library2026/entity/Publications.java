@@ -28,6 +28,7 @@ public class Publications {
     private String summary;
     private String language;
     private int numberOfPages;
+    private String image;
 
     // Асоціація багато-до-1: багато публікацій належать одній категорії
     @ManyToOne

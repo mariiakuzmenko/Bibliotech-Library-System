@@ -24,6 +24,7 @@ public class Authors {
     private String lastName;
     private String biography;
     private Date dateOfBirth;
+    private String image;
 
     @ManyToMany(mappedBy = "authors")
     // Асоціація багато-до-багатьох: один автор може написати багато публікацій
