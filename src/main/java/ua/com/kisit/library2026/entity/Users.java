@@ -1,5 +1,6 @@
 package ua.com.kisit.library2026.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
@@ -13,8 +14,11 @@ import java.util.Set;
 @ToString(exclude = {"roles"}) // Виключаємо Set, щоб уникнути циклів
 @EqualsAndHashCode(of = "username") // Унікальний ключ для порівняння
 
+@Entity
+@Table(name = "users")
 public class Users {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String password;
@@ -27,6 +31,7 @@ public class Users {
     private boolean isActive; // true = активний, false = заблокований
     private Date createdDate; // Коли акаунт створено
 
+    @ManyToMany(fetch = FetchType.EAGER)
     // Асоціація багато-до-багатьох: один користувач може мати багато ролей
     private Set<Roles> roles = new HashSet<>();
 }
