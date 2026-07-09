@@ -40,7 +40,7 @@ Unlike a standard e-commerce platform, this system implements specific library d
 
 **3. Dynamic Checkout & Reservation**
 *(Session-based cart handling user details, physical instance availability, and loan parameters.)*
-<img src="assets/order1png" width="800">
+<img src="assets/order1.png" width="800">
 
 ## Local Setup & Installation
 
