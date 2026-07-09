@@ -1,6 +1,8 @@
 package ua.com.kisit.library2026.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import ua.com.kisit.library2026.entity.Categories;
+import ua.com.kisit.library2026.entity.Genres;
 import ua.com.kisit.library2026.entity.Publications;
 
 import java.util.List;
@@ -14,13 +16,13 @@ public interface PublicationsRepository extends JpaRepository<Publications, Long
     List<Publications> findByTitleContainingIgnoreCase(String title);
 
     // 3. Пошук за категорією (наприклад, всі "Книги" або всі "Журнали")
-    List<Publications> findByCategory_Name(String categoryName);
+    List<Publications> findByCategory(Categories category);
 
     // 4. Пошук за прізвищем автора
     List<Publications> findByAuthors_LastNameIgnoreCase(String lastName);
 
     // 5. Пошук за жанром (наприклад, всі "Детективи")
-    List<Publications> findByGenres_NameIgnoreCase(String genreName);
+    List<Publications> findByGenresContaining(Genres genres);
 
     // 6. Сортування новинок (Останні додані книги)
     List<Publications> findTop10ByOrderByPublicationDateDesc();

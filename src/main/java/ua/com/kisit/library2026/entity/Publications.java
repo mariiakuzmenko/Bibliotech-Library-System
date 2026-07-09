@@ -13,7 +13,7 @@ import java.util.Set;
 @ToString(exclude = {"category", "publisher", "instances", "authors", "genres"})
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "isbn") // ISBN - ідеальний унікальний ключ
+@EqualsAndHashCode(of = "isbn") // ISBN - унікальний ключ
 
 
 @Entity
@@ -44,12 +44,21 @@ public class Publications {
     // Асоціація 1-до-багатьох: одна публікація (концепція) має багато фізичних екземплярів
     private List<PublicationInstances> instances;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     // Асоціація багато-до-багатьох: одну публікацію можуть написати багато авторів
     private Set<Authors> authors = new HashSet<>();
 
     @ManyToMany
     // Асоціація багато-до-багатьох: одна публікація може належати багатьом жанрам
     private Set<Genres> genres = new HashSet<>();
+
+    public boolean getIsAvailable() {
+        if (this.instances == null || this.instances.isEmpty()) {
+            return false;
+        }
+        // Check if ANY instance in the list has a status of "AVAILABLE"
+        return this.instances.stream()
+                .anyMatch(instance -> instance.getStatus().equals("Available"));
+    }
 
 }

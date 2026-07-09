@@ -2,6 +2,8 @@ package ua.com.kisit.library2026.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.jspecify.annotations.Nullable;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +17,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "roles")
-public class Roles {
+public class Roles implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,4 +26,14 @@ public class Roles {
     @ManyToMany(mappedBy = "roles")
     // Асоціація багато-до-багатьох: одна роль може належати багатьом користувачам
     private Set<Users> users = new HashSet<>();
+
+    public Roles(long id, String roleName) {
+        this.id = id;
+        this.roleName = roleName;
+    }
+
+    @Override
+    public @Nullable String getAuthority() {
+        return getRoleName();
+    }
 }

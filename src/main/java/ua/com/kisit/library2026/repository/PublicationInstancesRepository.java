@@ -12,8 +12,13 @@ public interface PublicationInstancesRepository extends JpaRepository<Publicatio
 
     // 2. Знайти всі доступні (AVAILABLE) екземпляри конкретної книги
     // Це потрібно, щоб показати користувачу: "Є в наявності: 3 шт."
-    List<PublicationInstances> findByPublication_IdAndStatus(Long publicationId, String status);
+    List<PublicationInstances> findFirstByPublication_IdAndStatus(Long publicationId, String status);
+
+    // Порахувати кількість доступних (щоб перевіряти, чи є вони взагалі)
+    long countByPublication_IdAndStatus(Long publicationId, String status);
 
     // 3. Знайти всі книги в конкретному залі (наприклад, для інвентаризації)
     List<PublicationInstances> findByLocation(String location);
+
+
 }

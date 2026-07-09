@@ -5,9 +5,9 @@ import ua.com.kisit.library2026.entity.Users;
 
 import java.util.Optional;
 
-public interface UsersRepository extends JpaRepository<Users, Integer> {
+public interface UsersRepository extends JpaRepository<Users, Long> {
     // 1. Знайти юзера для логіну
-    Optional<Users> findByUsername(String username);
+    Users findByUsername(String username);
 
     // 2. Перевірка при реєстрації (чи існує такий email)
     boolean existsByEmail(String email);

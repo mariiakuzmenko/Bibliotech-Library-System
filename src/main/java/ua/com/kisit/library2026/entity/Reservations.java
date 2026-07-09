@@ -25,6 +25,8 @@ public class Reservations {
     private Date dueDate; // До якої дати треба повернути
     private Date returnDate; // Коли фактично повернули
 
+    private String pickUpMethod;
+
     @ManyToOne
     @JoinColumn(name = "reader_id")
     // Асоціація багато-до-1: багато резервацій належить одному профілю читача

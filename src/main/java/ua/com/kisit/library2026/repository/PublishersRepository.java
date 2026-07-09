@@ -7,7 +7,7 @@ import ua.com.kisit.library2026.entity.Reservations;
 import java.util.List;
 import java.util.Optional;
 
-public interface PublishersRepository extends JpaRepository<Reservations, Long> {
+public interface PublishersRepository extends JpaRepository<Publishers, Long> {
     // Знайти видавництво за повною назвою
     Optional<Publishers> findByName(String name);
 
